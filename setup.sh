@@ -22,8 +22,8 @@ chmod ug+x ./PINGPONG
 device_id=$(read -p "Enter device_id: " id; echo "$id")
 
 tee start_pingpong.sh > /dev/null <<EOF
-sudo sysctl -w net.core.rmem_max=2500000
-sudo sysctl -w net.core.wmem_max=2500000
+sudo sysctl -w net.core.rmem_max=3000000
+sudo sysctl -w net.core.wmem_max=3000000
 sudo nohup ./PINGPONG --key ${device_id} > pingpong.log 2>&1 & echo \$! >> pingpong.pid
 EOF
 chmod ug+x start_pingpong.sh
