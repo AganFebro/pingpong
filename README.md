@@ -12,3 +12,4 @@
     ./start_pingpong.sh
     ./stop_pingpong.sh
     ./check_log.sh
+	./update_pp.sh
