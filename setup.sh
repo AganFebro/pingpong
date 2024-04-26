@@ -38,6 +38,15 @@ tee check_log.sh > /dev/null <<EOF
   tail -f pingpong.log
 EOF
 chmod ug+x check_log.sh
+tee update_pp.sh > /dev/null <<EOF
+	sudo kill \$(cat pingpong.pid)
+	sudo pkill PINGPONG
+	sudo docker stop pingpong-rtm pp-golem pp-masq pp-aioz pp-titan
+	rm pingpong.pid
+	wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
+	chmod ug+x ./PINGPONG
+EOF
+chmod ug+x update_pp.sh
 sudo tee /etc/logrotate.d/ore > /dev/null <<EOF
   $INSTALLATION_DIR/*.log {
     rotate 5
