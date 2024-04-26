@@ -43,6 +43,7 @@ tee update_pp.sh > /dev/null <<EOF
 	sudo pkill PINGPONG
 	sudo docker stop pingpong-rtm pp-golem pp-masq pp-aioz pp-titan
 	rm pingpong.pid
+	rm PINGPONG
 	wget -O PINGPONG https://pingpong-build.s3.ap-southeast-1.amazonaws.com/linux/latest/PINGPONG
 	chmod ug+x ./PINGPONG
 EOF
